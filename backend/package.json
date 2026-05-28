@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "API for football e-commerce products",
+  "description": "API para productos de e-commerce de fútbol",
   "main": "src/server.js",
   "scripts": {
     "dev": "node --watch src/server.js",

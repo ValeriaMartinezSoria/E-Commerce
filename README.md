@@ -1,8 +1,8 @@
-# Football E-Commerce
+# E-Commerce de Fútbol
 
-Local e-commerce starter project for football products: jerseys, gloves, boots, balls, and training gear.
+Proyecto base de e-commerce local para productos de fútbol: camisetas, guantes, botines, pelotas y material de entrenamiento.
 
-## Structure
+## Estructura
 
 ```text
 .
@@ -19,13 +19,13 @@ Local e-commerce starter project for football products: jerseys, gloves, boots, 
 `-- docker-compose.yml
 ```
 
-## Stack
+## Tecnologías
 
 - Frontend: React + Vite
 - Backend: Node.js + Express
-- Database (to connect later): MongoDB in Docker
+- Base de datos (para conectar después): MongoDB en Docker
 
-## Run Locally
+## Ejecutar en local
 
 1. Backend
 
@@ -35,46 +35,37 @@ copy .env.example .env
 npm run dev
 ```
 
-2. Frontend (new terminal)
+2. Frontend (nueva terminal)
 
 ```bash
 cd frontend
 npm run dev
 ```
 
-3. MongoDB with Docker (optional for now)
+3. MongoDB con Docker
 
 ```bash
 docker compose up -d
 ```
 
-Docker services:
+Servicios de Docker:
 - MongoDB: http://localhost:27017
 - Mongo Express: http://localhost:8081
 
-## Available API
+La primera vez que arranca MongoDB, crea la base de datos `football_store` y carga una colección `products` desde `docker/mongo-init.js`.
+
+## API disponible
 
 - GET /api/health
 - GET /api/products
 - GET /api/products?category=footwear
 
-Current categories:
+Categorías actuales:
 - footwear
 - equipment
 - apparel
 - training
 
-## MongoDB Note
+## Nota sobre MongoDB
 
-Real MongoDB integration is prepared for a next iteration. For now, the API responds with mock data from backend/src/data/products.js.
-
-## Git Author Configuration
-
-If you want to set author identity for this repository:
-
-```bash
-git config user.name "ponkez9300"
-git config user.email "pinkipandarojo@gmail.com"
-```
-
-For push authentication, use Git Credential Manager or a personal access token (recommended) instead of plain-text passwords.
+MongoDB ya está inicializada en Docker y lista para conectarse desde el backend más adelante. La API actual sigue usando datos mock desde `backend/src/data/products.js` hasta integrar la base de datos.
