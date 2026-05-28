@@ -4,8 +4,7 @@ const products = [
     name: 'Training Ball Pro',
     category: 'equipment',
     price: 49.99,
-    image:
-      'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=900&q=80',
+    image: '/products/ball.svg',
     description: 'Durable ball for daily training on natural or synthetic grass.',
   },
   {
@@ -13,8 +12,7 @@ const products = [
     name: 'Speed Cleats',
     category: 'footwear',
     price: 279.99,
-    image:
-      'https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&w=900&q=80',
+    image: '/products/boots.svg',
     description: 'Lightweight cleats for acceleration and fast direction changes.',
   },
   {
@@ -22,8 +20,7 @@ const products = [
     name: 'Performance Boots',
     category: 'footwear',
     price: 249.99,
-    image:
-      'https://images.unsplash.com/photo-1550999280-7b3b6f2f2f58?auto=format&fit=crop&w=900&q=80',
+    image: '/products/boots.svg',
     description: 'Control-focused boots with match-ready traction outsole.',
   },
   {
@@ -31,8 +28,7 @@ const products = [
     name: 'Away Jersey Pro',
     category: 'apparel',
     price: 94.99,
-    image:
-      'https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80',
+    image: '/products/jersey.svg',
     description: 'Official jersey with athletic fit and breathable fabric.',
   },
   {
@@ -40,8 +36,7 @@ const products = [
     name: 'Keeper Gloves Elite',
     category: 'equipment',
     price: 79.99,
-    image:
-      'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=900&q=80',
+    image: '/products/gloves.svg',
     description: 'Goalkeeper gloves with premium grip in dry or wet conditions.',
   },
   {
@@ -49,8 +44,7 @@ const products = [
     name: 'Training Cone Kit',
     category: 'training',
     price: 34.99,
-    image:
-      'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=900&q=80',
+    image: '/products/training.svg',
     description: 'Cone set for speed and coordination drills.',
   },
   {
@@ -58,8 +52,7 @@ const products = [
     name: 'Bib Vest Pack',
     category: 'training',
     price: 29.99,
-    image:
-      'https://images.unsplash.com/photo-1522778034537-20a2486be803?auto=format&fit=crop&w=900&q=80',
+    image: '/products/training.svg',
     description: 'Training bib pack to split teams during sessions.',
   },
   {
@@ -67,8 +60,7 @@ const products = [
     name: 'Match Socks Pro',
     category: 'apparel',
     price: 19.99,
-    image:
-      'https://images.unsplash.com/photo-1508098682722-e99c643e7485?auto=format&fit=crop&w=900&q=80',
+    image: '/products/socks.svg',
     description: 'Match socks with light compression and arch support.',
   },
 ]
