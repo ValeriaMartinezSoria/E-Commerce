@@ -1,12 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
 
 const categoryTabs = [
-  { key: 'all', label: 'All' },
-  { key: 'footwear', label: 'Footwear' },
-  { key: 'equipment', label: 'Equipment' },
-  { key: 'apparel', label: 'Apparel' },
-  { key: 'training', label: 'Training' },
+  { key: 'all', label: 'Todos' },
+  { key: 'footwear', label: 'Calzado' },
+  { key: 'equipment', label: 'Equipamiento' },
+  { key: 'apparel', label: 'Ropa' },
+  { key: 'training', label: 'Entrenamiento' },
 ]
+
+const categoryLabels = {
+  footwear: 'Calzado',
+  equipment: 'Equipamiento',
+  apparel: 'Ropa',
+  training: 'Entrenamiento',
+}
 
 const fallbackProducts = [
   {
@@ -165,19 +172,19 @@ function App() {
     <div className="page-shell">
       <header className="topbar">
         <div className="brand">PITCH</div>
-        <nav className="main-nav" aria-label="Main navigation">
-          <a href="#">Shop</a>
-          <a href="#">Collections</a>
-          <a href="#">About</a>
+        <nav className="main-nav" aria-label="Navegación principal">
+          <a href="#">Tienda</a>
+          <a href="#">Colecciones</a>
+          <a href="#">Nosotros</a>
         </nav>
         <div className="top-actions">
-          <button type="button" className="icon-btn" aria-label="Search">
+          <button type="button" className="icon-btn" aria-label="Buscar">
             ⌕
           </button>
           <button
             type="button"
             className="icon-btn cart-trigger"
-            aria-label="Open cart"
+            aria-label="Abrir carrito"
             onClick={() => setIsCartOpen(true)}
           >
             🛒
@@ -188,14 +195,14 @@ function App() {
 
       <main>
         <section className="hero-block">
-          <h1>Premium Football Gear</h1>
+          <h1>Equipamiento premium de fútbol</h1>
           <p>
-            Elevate your game with professional-grade equipment. Handpicked collection of
-            boots, balls, and apparel.
+            Mejora tu juego con equipamiento de nivel profesional. Una colección
+            seleccionada de botines, pelotas y ropa deportiva.
           </p>
         </section>
 
-        <section className="filters" aria-label="Product categories">
+        <section className="filters" aria-label="Categorías de productos">
           {categoryTabs.map((tab) => (
             <button
               type="button"
@@ -208,12 +215,12 @@ function App() {
           ))}
         </section>
 
-        <section className="product-grid" aria-label="Products">
+        <section className="product-grid" aria-label="Productos">
           {visibleProducts.map((product) => (
             <article key={product.id} className="card">
               <img src={product.image} alt={product.name} loading="lazy" />
               <div className="card-info">
-                <span>{product.category}</span>
+                <span>{categoryLabels[product.category] ?? product.category}</span>
                 <h2>{product.name}</h2>
                 <div className="card-bottom">
                   <strong>{formatCurrency(product.price)}</strong>
@@ -221,7 +228,7 @@ function App() {
                     type="button"
                     className="add-btn"
                     onClick={() => handleAddToCart(product.id)}
-                    aria-label={`Add ${product.name} to cart`}
+                    aria-label={`Agregar ${product.name} al carrito`}
                   >
                     +
                   </button>
@@ -242,16 +249,16 @@ function App() {
         }}
         role="button"
         tabIndex={0}
-        aria-label="Close cart overlay"
+        aria-label="Cerrar carrito"
       />
 
       <aside className={isCartOpen ? 'cart-drawer open' : 'cart-drawer'}>
         <div className="cart-header">
-          <h3>Cart</h3>
+          <h3>Carrito</h3>
           <button
             type="button"
             className="icon-btn"
-            aria-label="Close cart"
+            aria-label="Cerrar carrito"
             onClick={() => setIsCartOpen(false)}
           >
             ×
@@ -260,7 +267,7 @@ function App() {
 
         <div className="cart-content">
           {cartItems.length === 0 ? (
-            <p className="empty">Your cart is empty.</p>
+            <p className="empty">Tu carrito está vacío.</p>
           ) : (
             cartItems.map((item) => (
               <article key={item.id} className="cart-item">
@@ -298,7 +305,7 @@ function App() {
             <strong>{formatCurrency(cartTotal)}</strong>
           </div>
           <button type="button" className="checkout-btn">
-            Checkout
+            Pagar
           </button>
         </footer>
       </aside>

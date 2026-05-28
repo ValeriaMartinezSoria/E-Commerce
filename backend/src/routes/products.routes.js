@@ -1,20 +1,28 @@
 const express = require('express')
-const products = require('../data/products')
+const Product = require('../models/Product')
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res, next) => {
   const { category } = req.query
 
-  if (!category || category === 'all') {
+  try {
+    const query = !category || category === 'all' ? {} : { category: String(category).toLowerCase() }
+    const products = await Product.find(query).sort({ createdAt: -1 })
+
     return res.json(products)
+  } catch (error) {
+    return next(error)
   }
+})
 
-  const filtered = products.filter(
-    (product) => product.category.toLowerCase() === String(category).toLowerCase(),
-  )
-
-  return res.json(filtered)
+router.post('/refresh', async (_req, res, next) => {
+  try {
+    const count = await Product.countDocuments()
+    return res.json({ ok: true, count })
+  } catch (error) {
+    return next(error)
+  }
 })
 
 module.exports = router

@@ -1,6 +1,8 @@
 const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
+const connectDatabase = require('./config/db')
+const seedProductsInDatabase = require('./services/productSeeder')
 const productsRouter = require('./routes/products.routes')
 
 dotenv.config()
@@ -17,6 +19,22 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/products', productsRouter)
 
-app.listen(port, () => {
-  console.log(`Backend listening on http://localhost:${port}`)
+app.use((error, _req, res, _next) => {
+  console.error(error)
+  res.status(500).json({ message: 'Internal server error' })
+})
+
+async function startServer() {
+  await connectDatabase()
+  await seedProductsInDatabase()
+
+  app.listen(port, () => {
+    console.log(`Backend listening on http://localhost:${port}`)
+    console.log('MongoDB connected and seeded successfully')
+  })
+}
+
+startServer().catch((error) => {
+  console.error('Unable to start server', error)
+  process.exit(1)
 })

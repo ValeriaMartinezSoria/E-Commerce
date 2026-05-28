@@ -68,4 +68,4 @@ Categorías actuales:
 
 ## Nota sobre MongoDB
 
-MongoDB ya está inicializada en Docker y lista para conectarse desde el backend más adelante. La API actual sigue usando datos mock desde `backend/src/data/products.js` hasta integrar la base de datos.
+MongoDB ya está inicializada en Docker y conectada al backend. Al arrancar el servidor, se sincroniza el catálogo base desde `backend/src/data/products.js` para mantener la colección `products` lista y completa.
