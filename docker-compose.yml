@@ -4,9 +4,11 @@ services:
     container_name: football_mongodb
     restart: unless-stopped
     ports:
-      - '27017:27017'
+      - '27018:27017'
     environment:
       MONGO_INITDB_DATABASE: football_store
+      MONGO_INITDB_ROOT_USERNAME: ecom_admin
+      MONGO_INITDB_ROOT_PASSWORD: holamundo
     volumes:
       - mongo_data:/data/db
       - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
@@ -18,11 +20,29 @@ services:
     depends_on:
       - mongodb
     ports:
-      - '8081:8081'
+      - '8082:8081'
     environment:
       ME_CONFIG_MONGODB_SERVER: mongodb
       ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: 'true'
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ecom_admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: holamundo
       ME_CONFIG_BASICAUTH: 'false'
+
+  postgres:
+    image: postgres:15
+    container_name: football_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: football_store
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
 volumes:
   mongo_data:
+  postgres_data:

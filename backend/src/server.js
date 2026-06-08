@@ -2,8 +2,13 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
 const connectDatabase = require('./config/db')
+const { connectPostgres } = require('./config/pg')
 const seedProductsInDatabase = require('./services/productSeeder')
 const productsRouter = require('./routes/products.routes')
+const customersRouter = require('./routes/customers.routes')
+const reportsRouter = require('./routes/reports.routes')
+const cartRouter = require('./routes/cart.routes')
+const preferencesRouter = require('./routes/preferences.routes')
 
 dotenv.config()
 
@@ -18,6 +23,10 @@ app.get('/api/health', (_req, res) => {
 })
 
 app.use('/api/products', productsRouter)
+app.use('/api/customers', customersRouter)
+app.use('/api/reports', reportsRouter)
+app.use('/api/cart', cartRouter)
+app.use('/api/preferences', preferencesRouter)
 
 app.use((error, _req, res, _next) => {
   console.error(error)
@@ -25,8 +34,14 @@ app.use((error, _req, res, _next) => {
 })
 
 async function startServer() {
-  await connectDatabase()
-  await seedProductsInDatabase()
+  await Promise.all([connectDatabase(), connectPostgres()])
+  try {
+    await seedProductsInDatabase()
+  } catch (err) {
+    // If seeding fails due to MongoDB auth or other reasons, log and continue
+    console.warn('Warning: product seeding skipped or failed:', err.message)
+    console.warn('If this is an authentication issue, set MONGODB_URI with credentials or recreate the Mongo volume.')
+  }
 
   app.listen(port, () => {
     console.log(`Backend listening on http://localhost:${port}`)

@@ -29,6 +29,29 @@ const productSchema = new mongoose.Schema(
       type: String,
       default: 'BOB',
     },
+    // Flexible attributes to support dynamic category-specific fields
+    attributes: {
+      type: mongoose.Schema.Types.Mixed,
+      default: {},
+    },
+    // Common arrays for tags, variants, brands, etc.
+    tags: {
+      type: [String],
+      default: [],
+      index: true,
+    },
+    variants: {
+      type: [mongoose.Schema.Types.Mixed],
+      default: [],
+    },
+    brand: {
+      type: String,
+      index: true,
+    },
+    industry: {
+      type: String,
+      index: true,
+    },
   },
   {
     timestamps: true,

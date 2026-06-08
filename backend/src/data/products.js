@@ -6,6 +6,9 @@ const products = [
     price: 49.99,
     image: '/products/ball.svg',
     description: 'Durable ball for daily training on natural or synthetic grass.',
+    tags: ['ball', 'training'],
+    brand: 'ProSport',
+    attributes: { material: 'PU', size: 5, weight_g: 410 },
   },
   {
     id: 'cleat-speed-002',
@@ -14,6 +17,9 @@ const products = [
     price: 279.99,
     image: '/products/boots.svg',
     description: 'Lightweight cleats for acceleration and fast direction changes.',
+    tags: ['cleats', 'speed'],
+    brand: 'FastKick',
+    attributes: { sizes: [40,41,42,43], material: 'synthetic', surface: 'firm' },
   },
   {
     id: 'cleat-control-003',
@@ -22,6 +28,9 @@ const products = [
     price: 249.99,
     image: '/products/boots.svg',
     description: 'Control-focused boots with match-ready traction outsole.',
+    tags: ['cleats', 'control'],
+    brand: 'ControlMax',
+    attributes: { sizes: [39,40,41,42], material: 'leather', surface: 'soft' },
   },
   {
     id: 'jersey-away-004',
@@ -30,6 +39,9 @@ const products = [
     price: 94.99,
     image: '/products/jersey.svg',
     description: 'Official jersey with athletic fit and breathable fabric.',
+    tags: ['jersey', 'kit'],
+    brand: 'TeamWear',
+    attributes: { sizes: ['S','M','L','XL'], material: 'polyester', fit: 'athletic' },
   },
   {
     id: 'gloves-keeper-005',
@@ -38,6 +50,9 @@ const products = [
     price: 79.99,
     image: '/products/gloves.svg',
     description: 'Goalkeeper gloves with premium grip in dry or wet conditions.',
+    tags: ['gloves', 'keeper'],
+    brand: 'GripPro',
+    attributes: { sizes: ['S','M','L'], palm: 'latex', weather: ['dry','wet'] },
   },
   {
     id: 'cone-kit-006',
@@ -46,6 +61,9 @@ const products = [
     price: 34.99,
     image: '/products/training.svg',
     description: 'Cone set for speed and coordination drills.',
+    tags: ['cones','training'],
+    brand: 'DrillMaster',
+    attributes: { pieces: 20, color: ['orange','yellow'] },
   },
   {
     id: 'vest-pack-007',
@@ -54,6 +72,9 @@ const products = [
     price: 29.99,
     image: '/products/training.svg',
     description: 'Training bib pack to split teams during sessions.',
+    tags: ['vests','training'],
+    brand: 'DrillMaster',
+    attributes: { pieces: 10, sizes: ['adult'] },
   },
   {
     id: 'sock-pro-008',
@@ -62,6 +83,9 @@ const products = [
     price: 19.99,
     image: '/products/socks.svg',
     description: 'Match socks with light compression and arch support.',
+    tags: ['socks','kit'],
+    brand: 'SockIt',
+    attributes: { sizes: ['S','M','L'], material: 'nylon' },
   },
 ]
 
