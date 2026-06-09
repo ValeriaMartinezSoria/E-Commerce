@@ -1,13 +1,14 @@
 const express = require('express')
 const Cart = require('../models/Cart')
 const Product = require('../models/Product')
+const { validateUuidParam, validateCartPayload } = require('../middleware/validation')
 
 const router = express.Router()
 
 // Upsert cart for a customer. Body: { items: [{ productId, quantity }] }
-router.post('/:customerId', async (req, res, next) => {
+router.post('/:customerId', validateUuidParam('customerId'), validateCartPayload, async (req, res, next) => {
   const { customerId } = req.params
-  const { items } = req.body
+  const { items } = req.validatedBody
   try {
     const productIds = (items || []).map((i) => i.productId)
     const products = await Product.find({ _id: { $in: productIds } })
@@ -36,7 +37,7 @@ router.post('/:customerId', async (req, res, next) => {
   }
 })
 
-router.get('/:customerId', async (req, res, next) => {
+router.get('/:customerId', validateUuidParam('customerId'), async (req, res, next) => {
   const { customerId } = req.params
   try {
     const cart = await Cart.findOne({ customerId })

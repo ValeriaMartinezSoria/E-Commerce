@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Smartphone placeholder">
+  <rect width="512" height="512" rx="96" fill="#101522"/>
+  <rect x="152" y="72" width="208" height="368" rx="32" fill="#1f2a44"/>
+  <rect x="176" y="108" width="160" height="280" rx="18" fill="#d8e3ff"/>
+  <circle cx="256" cy="416" r="18" fill="#9db8ff"/>
+  <rect x="222" y="88" width="68" height="8" rx="4" fill="#9db8ff"/>
+</svg>

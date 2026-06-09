@@ -1,11 +1,13 @@
 const express = require('express')
 const Product = require('../models/Product')
+const { requiredRole } = require('../middleware/rbac')
+const { validateReportQuery } = require('../middleware/validation')
 
 const router = express.Router()
 
 // Price summary per brand for a category (or all)
 // GET /api/reports/price-summary?category=apparel
-router.get('/price-summary', async (req, res, next) => {
+router.get('/price-summary', requiredRole('admin'), validateReportQuery, async (req, res, next) => {
   try {
     const { category } = req.query
     const match = !category || category === 'all' ? {} : { category: String(category).toLowerCase() }
@@ -32,7 +34,7 @@ router.get('/price-summary', async (req, res, next) => {
 
 // Compare multiple brands statistics within a category
 // GET /api/reports/compare-brands?category=footwear&brands=FastKick,ControlMax
-router.get('/compare-brands', async (req, res, next) => {
+router.get('/compare-brands', requiredRole('admin'), validateReportQuery, async (req, res, next) => {
   try {
     const { category, brands } = req.query
     const match = { }
@@ -75,7 +77,7 @@ router.get('/compare-brands', async (req, res, next) => {
 
 // Price distribution (buckets) for a category
 // GET /api/reports/price-distribution?category=all&buckets=5
-router.get('/price-distribution', async (req, res, next) => {
+router.get('/price-distribution', requiredRole('admin'), validateReportQuery, async (req, res, next) => {
   try {
     const { category, buckets } = req.query
     const match = {}

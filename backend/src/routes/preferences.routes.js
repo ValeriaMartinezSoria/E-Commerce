@@ -1,11 +1,12 @@
 const express = require('express')
 const Preference = require('../models/Preference')
+const { validateUuidParam, validatePreferencePayload } = require('../middleware/validation')
 
 const router = express.Router()
 
-router.post('/:customerId', async (req, res, next) => {
+router.post('/:customerId', validateUuidParam('customerId'), validatePreferencePayload, async (req, res, next) => {
   const { customerId } = req.params
-  const { favorites, preferredCategories, metadata } = req.body
+  const { favorites, preferredCategories, metadata } = req.validatedBody
   try {
     const updated = await Preference.findOneAndUpdate(
       { customerId },
@@ -18,7 +19,7 @@ router.post('/:customerId', async (req, res, next) => {
   }
 })
 
-router.get('/:customerId', async (req, res, next) => {
+router.get('/:customerId', validateUuidParam('customerId'), async (req, res, next) => {
   const { customerId } = req.params
   try {
     const prefs = await Preference.findOne({ customerId })

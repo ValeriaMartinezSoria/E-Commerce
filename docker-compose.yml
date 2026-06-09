@@ -9,6 +9,7 @@ services:
       MONGO_INITDB_DATABASE: football_store
       MONGO_INITDB_ROOT_USERNAME: ecom_admin
       MONGO_INITDB_ROOT_PASSWORD: holamundo
+      TZ: America/La_Paz
     volumes:
       - mongo_data:/data/db
       - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
@@ -37,6 +38,7 @@ services:
       POSTGRES_DB: football_store
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      TZ: America/La_Paz
     ports:
       - '5432:5432'
     volumes:

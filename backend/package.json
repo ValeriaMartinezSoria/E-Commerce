@@ -5,7 +5,15 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "node --watch src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "db:create": "node scripts/create-postgres-schema.js",
+    "db:seed": "node scripts/seed-all.js",
+    "db:seed:postgres": "node scripts/seed-postgres-customers.js && node scripts/seed-postgres-orders.js",
+    "db:seed:mongo": "node scripts/seed-mongo-products.js",
+    "db:seed:prefs": "node scripts/seed-mongo-preferences.js",
+    "db:seed:carts": "node scripts/seed-mongo-carts.js",
+    "db:setup": "node scripts/setup-databases.js",
+    "db:verify-sql": "node scripts/verify-sql-parameters.js"
   },
   "keywords": [],
   "author": "ponkez9300",

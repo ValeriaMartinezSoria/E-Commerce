@@ -11,8 +11,11 @@ CREATE TABLE IF NOT EXISTS customers (
   name VARCHAR(255),
   email VARCHAR(255) UNIQUE,
   encrypted_card TEXT,
+  card_last4 VARCHAR(4),
   created_at TIMESTAMPTZ DEFAULT now()
 );
+
+ALTER TABLE customers ADD COLUMN IF NOT EXISTS card_last4 VARCHAR(4);
 
 CREATE TABLE IF NOT EXISTS orders (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),

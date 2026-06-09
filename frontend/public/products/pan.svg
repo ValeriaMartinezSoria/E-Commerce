@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Pan placeholder">
+  <rect width="512" height="512" rx="96" fill="#fff4e1"/>
+  <ellipse cx="246" cy="270" rx="130" ry="110" fill="#242424"/>
+  <ellipse cx="246" cy="262" rx="96" ry="78" fill="#f6b14b"/>
+  <rect x="338" y="248" width="116" height="22" rx="11" fill="#242424"/>
+  <rect x="396" y="240" width="48" height="38" rx="19" fill="#242424"/>
+</svg>

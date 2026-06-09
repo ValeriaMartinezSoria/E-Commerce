@@ -1,0 +1,10 @@
+flowchart TD
+  A[Frontend React] --> B[Backend Express]
+  B --> C[Middleware RBAC y validación]
+  C --> D[(MongoDB catálogo)]
+  C --> E[(PostgreSQL clientes y pedidos)]
+  D --> F[Seed de products]
+  E --> G[Seed de customers y orders]
+  H[Docker Compose] --> D
+  H --> E
+  A -->|x-user-roles| B

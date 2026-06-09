@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Chair placeholder">
+  <rect width="512" height="512" rx="96" fill="#f2efe8"/>
+  <rect x="146" y="164" width="220" height="120" rx="28" fill="#7a5c45"/>
+  <rect x="170" y="112" width="172" height="84" rx="24" fill="#9a7b62"/>
+  <rect x="176" y="278" width="28" height="128" rx="14" fill="#5a4635"/>
+  <rect x="308" y="278" width="28" height="128" rx="14" fill="#5a4635"/>
+  <rect x="128" y="176" width="48" height="24" rx="12" fill="#5a4635"/>
+  <rect x="336" y="176" width="48" height="24" rx="12" fill="#5a4635"/>
+</svg>

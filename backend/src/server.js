@@ -4,8 +4,10 @@ const express = require('express')
 const connectDatabase = require('./config/db')
 const { connectPostgres } = require('./config/pg')
 const seedProductsInDatabase = require('./services/productSeeder')
+const { attachRequestUser } = require('./middleware/rbac')
 const productsRouter = require('./routes/products.routes')
 const customersRouter = require('./routes/customers.routes')
+const ordersRouter = require('./routes/orders.routes')
 const reportsRouter = require('./routes/reports.routes')
 const cartRouter = require('./routes/cart.routes')
 const preferencesRouter = require('./routes/preferences.routes')
@@ -17,6 +19,7 @@ const port = Number(process.env.PORT) || 4000
 
 app.use(cors())
 app.use(express.json())
+app.use(attachRequestUser)
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'football-ecommerce-api' })
@@ -24,13 +27,15 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/products', productsRouter)
 app.use('/api/customers', customersRouter)
+app.use('/api/orders', ordersRouter)
 app.use('/api/reports', reportsRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/preferences', preferencesRouter)
 
 app.use((error, _req, res, _next) => {
   console.error(error)
-  res.status(500).json({ message: 'Internal server error' })
+  const status = error.status || error.statusCode || 500
+  res.status(status).json({ message: error.message || 'Internal server error' })
 })
 
 async function startServer() {
